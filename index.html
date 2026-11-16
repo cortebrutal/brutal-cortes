@@ -402,6 +402,54 @@ html.com-intro body{overflow:hidden}
 @media (max-width:860px){.orbita{display:none}}
 @media (prefers-reduced-motion:reduce){.sobe,.rev{filter:none;transform:none;transition:opacity .3s}.aneis,.tile b{animation:none}.intro{display:none}}
 </style>
+<style>
+/* ---- planos com pagamento (16/11) ---- */
+.pro-topo{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.ciclo{display:inline-flex;padding:4px;border:1px solid var(--borda2);border-radius:12px;background:var(--bg);gap:4px}
+.ciclo-op{font:inherit;font-size:14px;font-weight:600;color:var(--sub);background:transparent;border:0;border-radius:9px;padding:8px 14px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:background .18s ease,color .18s ease}
+.ciclo-op:hover{color:var(--txt)}
+.ciclo-op[aria-pressed="true"]{background:var(--txt);color:var(--bg)}
+.ciclo-op:focus-visible,.op-pag input:focus-visible+.op-corpo,.modal-x:focus-visible{outline:2px solid var(--roxo-txt);outline-offset:2px}
+.selo-off{font-size:11px;font-weight:700;letter-spacing:.02em;padding:2px 6px;border-radius:6px;background:var(--roxo);color:#FFFFFF}
+.preco #pro-valor{display:inline-block;transition:transform .25s ease,opacity .25s ease}
+.preco.troca #pro-valor{transform:translateY(-6px);opacity:0}
+.pro-nota{margin:-8px 0 0;color:var(--sub);font-size:14px}
+.pro-acoes{margin-top:auto;display:flex;flex-direction:column;gap:10px}
+.pro-acoes .btn{margin-top:0;width:100%}
+.pro-pag{margin:0;text-align:center;color:var(--fraco);font-size:13px}
+.modal-pag{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:20px}
+.modal-pag[hidden]{display:none}
+.modal-fundo{position:absolute;inset:0;background:rgba(5,5,8,.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);animation:mp-fade .2s ease}
+.modal-caixa{position:relative;width:min(440px,100%);background:var(--sup);color:var(--txt);border:1px solid var(--txt);border-radius:18px;padding:28px;box-shadow:8px 8px 0 var(--roxo);display:flex;flex-direction:column;gap:14px;animation:mp-sobe .28s cubic-bezier(.2,.8,.2,1)}
+.modal-caixa h3{margin:0;font-size:24px;font-weight:600}
+.modal-sub{margin:0;color:var(--sub);font-size:15px}
+.modal-x{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:10px;border:1px solid var(--borda2);background:transparent;color:var(--txt);font-size:22px;line-height:1;cursor:pointer}
+.modal-x:hover{border-color:var(--roxo-txt)}
+.opcoes-pag{display:flex;flex-direction:column;gap:10px}
+.op-pag{position:relative;cursor:pointer}
+.op-pag input{position:absolute;opacity:0;pointer-events:none}
+.op-corpo{display:grid;grid-template-columns:1fr auto;grid-template-rows:auto auto;column-gap:12px;align-items:center;padding:14px 16px;border:1px solid var(--borda2);border-radius:14px;background:var(--bg);transition:border-color .15s ease,box-shadow .15s ease,transform .15s ease}
+.op-corpo b{grid-column:1;font-size:16px;display:flex;align-items:center;gap:8px}
+.op-det{grid-column:1;color:var(--sub);font-size:13px}
+.op-preco{grid-column:2;grid-row:1 / span 2;font-size:22px;font-weight:700;letter-spacing:-.02em}
+.op-pag:hover .op-corpo{border-color:var(--roxo-txt)}
+.op-pag input:checked+.op-corpo{border-color:var(--txt);box-shadow:4px 4px 0 var(--roxo);transform:translate(-2px,-2px)}
+.modal-caixa .btn{width:100%}
+.modal-rodape{margin:0;text-align:center;color:var(--fraco);font-size:13px}
+body.modal-aberto{overflow:hidden}
+@keyframes mp-fade{from{opacity:0}to{opacity:1}}
+@keyframes mp-sobe{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){.modal-fundo,.modal-caixa{animation:none}.preco #pro-valor,.op-corpo{transition:none}}
+/* ---- vídeo de anúncio 9:16 / 16:9 (16/11) ---- */
+#anuncio .cab{text-align:center;margin-left:auto;margin-right:auto}
+.anuncio-barra{display:flex;justify-content:center;margin:4px 0 20px}
+.anuncio-moldura{margin:0 auto;border:1px solid var(--txt);border-radius:18px;overflow:hidden;box-shadow:8px 8px 0 var(--roxo);background:#000;transition:width .35s ease}
+.anuncio-moldura[data-formato="9x16"]{width:min(360px,100%,calc((100vh - 170px) * 9 / 16));aspect-ratio:9/16}
+.anuncio-moldura[data-formato="16x9"]{width:min(960px,100%,calc((100vh - 170px) * 16 / 9));aspect-ratio:16/9}
+.anuncio-moldura video{display:block;width:100%;height:100%;object-fit:contain;background:#000}
+.anuncio-acoes{display:flex;justify-content:center;gap:12px;margin-top:26px;flex-wrap:wrap}
+@media (prefers-reduced-motion: reduce){.anuncio-moldura{transition:none}}
+</style>
 </head>
 <body>
 <div class="intro" id="intro" aria-hidden="true"><div class="intro-marca"><img src="data:image/png;base64,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" alt=""><span>B</span><span>R</span><span>U</span><span>T</span><span>A</span><span>L</span><span class="esp"></span><span>C</span><span>O</span><span>R</span><span>T</span><span>E</span><span>S</span></div></div>
@@ -452,8 +500,8 @@ html.com-intro body{overflow:hidden}
         <a class="btn btn-roxo baixar-link" href="#baixar">Baixar grátis para Windows</a>
         <a class="btn btn-linha" href="#demo">Testar a demonstração</a>
       </div>
-      <p class="meta">Windows 10 e 11 · versão 1.6.1 Beta · 279 MB</p>
-      <p class="confianca">Feito pela equipe da página Brutal Cortes, que edita cortes todos os dias para um canal com mais de 10 milhões de seguidores somados.</p>
+      <p class="meta">Windows 10 e 11 · versão 1.8 Beta · 279 MB</p>
+      <p class="confianca">Feito pela equipe da página Brutal Cortes, que edita cortes todos os dias.</p>
     </div>
     <div class="cena-hero">
     <div class="orbita" aria-hidden="true">
@@ -640,6 +688,30 @@ html.com-intro body{overflow:hidden}
   </div>
 </section>
 
+<section class="secao" id="anuncio">
+  <div class="w">
+    <div class="cab sobe">
+      <h2>Veja o Brutal Cortes em 35 segundos.</h2>
+      <p>Assista do jeito que preferir: em pé, como no celular, ou deitado, como no computador.</p>
+    </div>
+    <div class="anuncio-barra sobe">
+      <div class="ciclo" role="group" aria-label="Formato do vídeo">
+        <button type="button" class="ciclo-op formato-op" data-formato="9x16" aria-pressed="true">9:16</button>
+        <button type="button" class="ciclo-op formato-op" data-formato="16x9" aria-pressed="false">16:9</button>
+      </div>
+    </div>
+    <div class="anuncio-moldura sobe" data-formato="9x16">
+      <video id="anuncio-video" controls playsinline muted preload="metadata" poster="anuncio-9x16.jpg">
+        <source src="anuncio-9x16.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="anuncio-acoes sobe">
+      <a class="btn btn-roxo" href="#planos">Ver os planos</a>
+      <a class="btn btn-linha baixar-link" href="#baixar">Baixar grátis</a>
+    </div>
+  </div>
+</section>
+
 <section class="secao" id="planos">
   <div class="w">
     <div class="cab sobe">
@@ -654,20 +726,46 @@ html.com-intro body{overflow:hidden}
         <a class="btn btn-linha baixar-link" href="#baixar">Baixar grátis</a>
       </div>
       <div class="plano pro sobe">
-        <h3 class="pro-titulo"><svg class="diam" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M6.5 3.5h11L22 9.5 12 21 2 9.5z"/><path d="M2 9.5h20M9.5 3.5 7.5 9.5 12 21l4.5-11.5-2-6"/></svg>Pro</h3>
-        <div class="preco">Em breve</div>
-        <ul><li>Tudo do Grátis</li><li>IA sem limite: todos os momentos fortes</li><li>Enquadramento automático que acompanha o rosto</li><li>Tirar pausas automático</li><li>Todos os estilos e animações</li><li>60 fps e sem marca d'água</li></ul>
-        <a class="btn btn-roxo baixar-link" href="#baixar">Testar 3 dias grátis</a>
+        <div class="pro-topo">
+          <h3 class="pro-titulo"><svg class="diam" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M6.5 3.5h11L22 9.5 12 21 2 9.5z"/><path d="M2 9.5h20M9.5 3.5 7.5 9.5 12 21l4.5-11.5-2-6"/></svg>Pro</h3>
+          <div class="ciclo" role="group" aria-label="Período do Pro">
+            <button type="button" class="ciclo-op" data-ciclo="mes" aria-pressed="true">Mensal</button>
+            <button type="button" class="ciclo-op" data-ciclo="ano" aria-pressed="false">Anual <span class="selo-off">−40%</span></button>
+          </div>
+        </div>
+        <div class="preco" aria-live="polite"><span id="pro-valor">R$ 24,90</span> <small id="pro-per">por 30 dias</small></div>
+        <p class="pro-nota" id="pro-nota">Pagamento único, sem renovação automática.</p>
+        <ul><li>Tudo do Grátis</li><li>IA sem limite: todos os momentos fortes</li><li>Enquadramento automático que acompanha o rosto</li><li>Sortear edição: zoom rápido e palavra em destaque em cada corte</li><li>Tirar pausas automático</li><li>Todos os estilos e animações</li><li>60 fps e sem marca d'água</li></ul>
+        <div class="pro-acoes">
+          <button type="button" class="btn btn-roxo" id="abrir-pagar">Assinar o Pro</button>
+          <a class="btn btn-linha baixar-link" href="#baixar">Testar 3 dias grátis</a>
+        </div>
+        <p class="pro-pag">Pix, cartão ou boleto · pagamento seguro pela Kiwify</p>
       </div>
     </div>
   </div>
 </section>
 
+<div class="modal-pag" id="modal-pag" hidden>
+  <div class="modal-fundo" data-fechar></div>
+  <div class="modal-caixa" role="dialog" aria-modal="true" aria-labelledby="modal-pag-titulo">
+    <button class="modal-x" type="button" data-fechar aria-label="Fechar">×</button>
+    <h3 id="modal-pag-titulo" class="pro-titulo"><svg class="diam" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M6.5 3.5h11L22 9.5 12 21 2 9.5z"/><path d="M2 9.5h20M9.5 3.5 7.5 9.5 12 21l4.5-11.5-2-6"/></svg>Escolha seu Pro</h3>
+    <p class="modal-sub">A chave de ativação chega no seu e-mail depois do pagamento.</p>
+    <div class="opcoes-pag" role="radiogroup" aria-label="Plano">
+      <label class="op-pag"><input type="radio" name="plano-pro" value="mes" checked><span class="op-corpo"><b>Mensal</b><span class="op-det">30 dias · pagamento único</span><span class="op-preco">R$ 24,90</span></span></label>
+      <label class="op-pag"><input type="radio" name="plano-pro" value="ano"><span class="op-corpo"><b>Anual <span class="selo-off">−40%</span></b><span class="op-det">1 ano · sai por R$ 14,99 por mês</span><span class="op-preco">R$ 179,90</span></span></label>
+    </div>
+    <a class="btn btn-roxo" id="ir-pagar" href="https://pay.kiwify.com.br/dCY02sI" target="_blank" rel="noopener">Continuar para o pagamento</a>
+    <p class="modal-rodape">Pix, cartão ou boleto. Você vai para a página segura da Kiwify.</p>
+  </div>
+</div>
+
 <section class="secao" id="baixar" style="padding-top:24px">
   <div class="w">
     <div class="baixar-card sobe">
       <div>
-        <h2>Brutal Cortes 1.6 Beta</h2>
+        <h2>Brutal Cortes 1.8 Beta</h2>
         <p style="color:var(--sub);margin:0">Grátis. Instala em 1 minuto e já abre com o tutorial.</p>
         <p class="fatos">Windows 10 e 11 (64 bits) · 279 MB · 3 dias de Pro de presente</p>
         <div class="linha-btns"><a class="btn btn-roxo baixar-link" href="#baixar" id="btn-baixar">Baixar grátis</a></div>
@@ -706,7 +804,7 @@ html.com-intro body{overflow:hidden}
       <h2>Perguntas frequentes</h2>
     </div>
     <div class="sobe">
-      <details><summary>É grátis mesmo?</summary><p>Sim. Cortes manuais sem limite, legenda automática, tela dividida e 2 momentos da IA por dia, de graça. O vídeo sai com a marca Brutal Cortes no canto. O Pro, que vem em breve, libera o resto e tira a marca.</p></details>
+      <details><summary>É grátis mesmo?</summary><p>Sim. Cortes manuais sem limite, legenda automática, tela dividida e 2 momentos da IA por dia, de graça. O vídeo sai com a marca Brutal Cortes no canto. O Pro libera o resto e tira a marca: R$ 24,90 por 30 dias ou R$ 179,90 por 1 ano, em pagamento único, sem renovação automática.</p></details>
       <details><summary>Preciso de placa de vídeo?</summary><p>Não. Com uma placa NVIDIA, AMD ou Intel, a exportação fica mais rápida. A legenda acelera com placa NVIDIA (com o pacote da placa); nas outras, usa o processador.</p></details>
       <details><summary>Preciso de um PC forte?</summary><p>Não. O app tem os modos Leve, Mediano e Forte e escolhe o certo para o seu computador na primeira vez que abre.</p></details>
       <details><summary>Funciona sem internet?</summary><p>Sim. A internet só é usada uma vez, para baixar o modelo de legenda e o detector de rosto. Depois disso, tudo roda no seu PC.</p></details>
@@ -1169,7 +1267,7 @@ html.com-intro body{overflow:hidden}
     alvo = link;
     if (!alvo) {
       document.getElementById("jb-titulo").textContent = "O download abre hoje";
-      texto.textContent = "Estamos subindo a Beta 1.6. Siga a Brutal Cortes nas redes para pegar o link assim que sair.";
+      texto.textContent = "Estamos subindo a Beta 1.8. Siga a Brutal Cortes nas redes para pegar o link assim que sair.";
       form.style.display = "none"; document.getElementById("jb-pular").textContent = "Fechar";
     } else if (!BREVO_FORM) { baixar(); return; }
     fundo.classList.add("aberta");
@@ -1228,8 +1326,8 @@ html.com-intro body{overflow:hidden}
   // índice lateral (seção atual) e régua
   var SEC = [["topo", "Início"], ["app", "O app"], ["gratis", "Grátis"], ["decada", "A década"], ["demo", "Demonstração"],
              ["recursos", "Recursos"], ["como", "Como funciona"], ["para-quem", "Para quem"], ["comparacao", "Comparação"],
-             ["comecando", "Primeiros passos"], ["planos", "Planos"], ["baixar", "Download"], ["lista", "Comunidade"], ["duvidas", "Dúvidas"]];
-  var LISTA = ["topo", "app", "demo", "recursos", "como", "planos", "baixar", "duvidas"];
+             ["comecando", "Primeiros passos"], ["anuncio", "Vídeo"], ["planos", "Planos"], ["baixar", "Download"], ["lista", "Comunidade"], ["duvidas", "Dúvidas"]];
+  var LISTA = ["topo", "app", "demo", "recursos", "como", "anuncio", "planos", "baixar", "duvidas"];
   var secs = SEC.map(function (x) { return [document.getElementById(x[0]), x[1], x[0]]; }).filter(function (x) { return x[0]; });
   var ol = document.getElementById("indice-lista");
   ol.innerHTML = LISTA.map(function (id) { var x = SEC.filter(function (y) { return y[0] === id; })[0]; return '<li data-id="' + id + '">' + x[1] + "</li>"; }).join("");
@@ -1270,6 +1368,94 @@ html.com-intro body{overflow:hidden}
     mx = (e.clientX / window.innerWidth - 0.5) * 2; my = (e.clientY / window.innerHeight - 0.5) * 2; pedir();
   });
   quadro();
+})();
+</script>
+<script>
+/* ---- planos: mensal/anual e janela de pagamento (Kiwify) ---- */
+(function () {
+  var PLANOS = {
+    mes: {valor: "R$ 24,90", per: "por 30 dias", link: "https://pay.kiwify.com.br/dCY02sI"},
+    ano: {valor: "R$ 179,90", per: "por 1 ano · R$ 14,99/mês", link: "https://pay.kiwify.com.br/GpcJCNZ"}
+  };
+  var atual = "mes";
+  var preco = document.querySelector("#planos .plano.pro .preco");
+  var valor = document.getElementById("pro-valor"), per = document.getElementById("pro-per");
+  var ops = document.querySelectorAll("#planos .ciclo-op");
+  var modal = document.getElementById("modal-pag"), ir = document.getElementById("ir-pagar");
+  var abrir = document.getElementById("abrir-pagar"), voltarFoco = null;
+  if (!modal || !ir || !abrir) return;
+  function escolher(c, animar) {
+    atual = c;
+    Array.prototype.forEach.call(ops, function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-ciclo") === c ? "true" : "false"); });
+    var r = modal.querySelector('input[value="' + c + '"]'); if (r) r.checked = true;
+    ir.href = PLANOS[c].link;
+    if (!valor) return;
+    if (animar && preco) {
+      preco.classList.add("troca");
+      setTimeout(function () { valor.textContent = PLANOS[c].valor; per.textContent = PLANOS[c].per; preco.classList.remove("troca"); }, 160);
+    } else { valor.textContent = PLANOS[c].valor; per.textContent = PLANOS[c].per; }
+  }
+  Array.prototype.forEach.call(ops, function (b) { b.addEventListener("click", function () { escolher(b.getAttribute("data-ciclo"), true); }); });
+  Array.prototype.forEach.call(modal.querySelectorAll('input[name="plano-pro"]'), function (r) {
+    r.addEventListener("change", function () { if (r.checked) escolher(r.value, true); });
+  });
+  function fechar() {
+    modal.hidden = true; document.body.classList.remove("modal-aberto");
+    if (voltarFoco) voltarFoco.focus();
+  }
+  abrir.addEventListener("click", function () {
+    voltarFoco = abrir; escolher(atual, false);
+    modal.hidden = false; document.body.classList.add("modal-aberto");
+    var r = modal.querySelector('input[name="plano-pro"]:checked'); if (r) r.focus();
+  });
+  Array.prototype.forEach.call(modal.querySelectorAll("[data-fechar]"), function (el) { el.addEventListener("click", fechar); });
+  document.addEventListener("keydown", function (e) {
+    if (modal.hidden) return;
+    if (e.key === "Escape") { fechar(); return; }
+    if (e.key === "Tab") {
+      var f = modal.querySelectorAll('button, a[href], input[name="plano-pro"]:checked');
+      var p = f[0], u = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === p) { e.preventDefault(); u.focus(); }
+      else if (!e.shiftKey && document.activeElement === u) { e.preventDefault(); p.focus(); }
+    }
+  });
+  ir.addEventListener("click", function () { setTimeout(fechar, 300); });
+})();
+</script>
+<script>
+/* ---- vídeo de anúncio: formato 9:16 ou 16:9 ---- */
+(function () {
+  var v = document.getElementById("anuncio-video"), mold = document.querySelector(".anuncio-moldura");
+  if (!v || !mold) return;
+  var btns = document.querySelectorAll(".formato-op");
+  var FONTES = {"9x16": {src: "anuncio-9x16.mp4", poster: "anuncio-9x16.jpg"}, "16x9": {src: "anuncio-16x9.mp4", poster: "anuncio-16x9.jpg"}};
+  var atual = "9x16";
+  function usar(f) {
+    if (f === atual) return;
+    var t = v.currentTime || 0, tocando = !v.paused;
+    atual = f; mold.setAttribute("data-formato", f);
+    Array.prototype.forEach.call(btns, function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-formato") === f ? "true" : "false"); });
+    v.poster = FONTES[f].poster; v.src = FONTES[f].src; v.load();
+    if (t > 0) {
+      v.addEventListener("loadedmetadata", function volta() {
+        v.removeEventListener("loadedmetadata", volta);
+        try { v.currentTime = t; } catch (e) {}
+        if (tocando) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+      });
+    }
+  }
+  Array.prototype.forEach.call(btns, function (b) { b.addEventListener("click", function () { usar(b.getAttribute("data-formato")); }); });
+  if (window.matchMedia && window.matchMedia("(min-width: 900px)").matches) usar("16x9");
+  var reduz = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reduz && "IntersectionObserver" in window) {
+    var jaTocou = false;
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting && !jaTocou) { jaTocou = true; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+        else if (!e.isIntersecting && !v.paused) v.pause();
+      });
+    }, {threshold: 0.5}).observe(v);
+  }
 })();
 </script>
 </body>
